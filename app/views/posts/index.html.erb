@@ -1,0 +1,14 @@
+<h1>All Posts</h1>
+<% if current_user %>
+  <%= link_to "New Post", new_post_path %>
+<% end %>
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post %> by <%= post.user.email %>
+      <% if current_user == post.user %>
+        | <%= link_to "Edit", edit_post_path(post) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
